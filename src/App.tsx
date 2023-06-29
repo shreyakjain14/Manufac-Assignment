@@ -1,24 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useMemo } from "react";
+
+import { Wine } from "./models/Wine";
+import FlavanoidsAnalyticsTable from "./components/FlavanoidsAnalyticsTable";
+import GammaAnalyticsTable from "./components/GammaAnalyticsTable";
+import "./App.css";
+
+const wines: Wine[] = require("./Wine-Datas.json");
 
 function App() {
+  // Creating map mapping alcoholClasses to Wine
+  const alcoholClassesMap = useMemo(() => {
+    const map = new Map();
+    wines.forEach((wine: Wine) => {
+      const { Alcohol, Ash, Hue, Magnesium } = wine;
+      if (!map.has(Alcohol)) map.set(Alcohol, []);
+      map.set(Alcohol, [...map.get(Alcohol), wine]);
+    });
+    return map;
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="tables-container">
+      <h1>Flavanoid Analytics</h1>
+      <FlavanoidsAnalyticsTable alcoholClassesMap={alcoholClassesMap} />
+      <h1>Gamma Analytics</h1>
+      <GammaAnalyticsTable alcoholClassesMap={alcoholClassesMap} />
     </div>
   );
 }
