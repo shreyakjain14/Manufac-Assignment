@@ -30,9 +30,10 @@ Your app is ready to be deployed!
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 ## Learn More
+Gamma Analytics table
 <img width="787" alt="Screenshot 2023-06-30 at 3 43 32 PM" src="https://github.com/shreyakjain14/Manufac-Assignment/assets/52107834/1461efb0-fa22-4178-bb8b-7c27c08b198c">
-![Uploading Screenshot 2023-06-30 at 3.43.28 PM.
 
+Flavanoids Analytics table
 <img width="700" alt="Screenshot 2023-06-30 at 3 43 28 PM" src="https://github.com/shreyakjain14/Manufac-Assignment/assets/52107834/2b9c2e74-528c-4f68-995a-109c2e9fe01f">
 ng…]()
 
