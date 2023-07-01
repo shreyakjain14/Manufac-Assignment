@@ -29,6 +29,14 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
+## Learn More
+Gamma Analytics table
+<img width="787" alt="Screenshot 2023-06-30 at 3 43 32 PM" src="https://github.com/shreyakjain14/Manufac-Assignment/assets/52107834/1461efb0-fa22-4178-bb8b-7c27c08b198c">
+
+Flavanoids Analytics table
+<img width="700" alt="Screenshot 2023-06-30 at 3 43 28 PM" src="https://github.com/shreyakjain14/Manufac-Assignment/assets/52107834/2b9c2e74-528c-4f68-995a-109c2e9fe01f">
+ng…]()
+
 ### `npm run eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**
@@ -39,7 +47,7 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
