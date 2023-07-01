@@ -13,7 +13,7 @@ const GammaAnalyticsTable = ({ alcoholClassesMap }: any) => {
   useEffect(() => {
     const means: number[] = [],
       medians: number[] = [],
-      modes: number[] = [];
+      modes: string[] = [];
 
     for (const wines of alcoholClassesMap.values()) {
       let mean: number = 0,
@@ -29,9 +29,10 @@ const GammaAnalyticsTable = ({ alcoholClassesMap }: any) => {
 
         const gamma = (Ash * Hue) / Magnesium;
 
-        valuesMap.set(gamma, (valuesMap.get(gamma) || 0) + 1);
-        if (valuesMap.get(gamma) > MAX_COUNT) {
-          MAX_COUNT = valuesMap.get(gamma);
+        const count = valuesMap.get(gamma) || 0;
+        valuesMap.set(gamma, count + 1);
+        if (count + 1 > MAX_COUNT) {
+          MAX_COUNT = count + 1;
           mode = gamma;
         }
 
@@ -53,9 +54,11 @@ const GammaAnalyticsTable = ({ alcoholClassesMap }: any) => {
         median = (gammas[midIdx - 1] + gammas[midIdx]) / 2;
       }
 
+      if (MAX_COUNT === 1) modes.push("NA");
+      else modes.push(mode.toFixed(3));
+
       means.push(mean);
       medians.push(median);
-      modes.push(mode);
     }
 
     setMeans(means);
@@ -82,7 +85,7 @@ const GammaAnalyticsTable = ({ alcoholClassesMap }: any) => {
         <tr>
           <th>Gamma Mode</th>
           {modes.map((mode, index) => (
-            <td key={id + "-mode-" + index}>{mode.toFixed(3)}</td>
+            <td key={id + "-mode-" + index}>{mode}</td>
           ))}
         </tr>
       </tbody>

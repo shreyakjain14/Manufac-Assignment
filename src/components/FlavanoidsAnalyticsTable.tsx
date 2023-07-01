@@ -13,7 +13,7 @@ const FlavanoidsAnalyticsTable = ({ alcoholClassesMap }: any) => {
   useEffect(() => {
     const means: number[] = [],
       medians: number[] = [],
-      modes: number[] = [];
+      modes: string[] = [];
 
     for (const wines of alcoholClassesMap.values()) {
       let mean: number = 0,
@@ -39,10 +39,12 @@ const FlavanoidsAnalyticsTable = ({ alcoholClassesMap }: any) => {
       }
 
       wines.forEach(({ Flavanoids }: Wine) => {
-        valuesMap.set(Flavanoids, (valuesMap.get(Flavanoids) || 0) + 1);
+        const count = valuesMap.get(Flavanoids) || 0;
+        valuesMap.set(Flavanoids, count + 1);
         // Checking if occured max number of times
-        if (valuesMap.get(Flavanoids) > MAX_COUNT) {
-          MAX_COUNT = valuesMap.get(Flavanoids);
+
+        if (count + 1 > MAX_COUNT) {
+          MAX_COUNT = count + 1;
           mode = Flavanoids;
         }
 
@@ -52,9 +54,11 @@ const FlavanoidsAnalyticsTable = ({ alcoholClassesMap }: any) => {
 
       mean /= wines.length;
 
+      if (MAX_COUNT === 1) modes.push("NA");
+      else modes.push(mode.toFixed(3));
+
       means.push(mean);
       medians.push(median);
-      modes.push(mode);
     }
 
     setMeans(means);
@@ -75,7 +79,7 @@ const FlavanoidsAnalyticsTable = ({ alcoholClassesMap }: any) => {
         <tr>
           <th>Flavanoids Median</th>
           {medians.map((median, index) => (
-            <td key={id + "-median-" + index}>{median}</td>
+            <td key={id + "-median-" + index}>{median.toFixed(3)}</td>
           ))}
         </tr>
         <tr>

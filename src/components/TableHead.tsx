@@ -3,7 +3,7 @@ const TableHead = ({ alcoholClassesMap }: any) => {
   const populateHeaderColumns = () => {
     const header = [];
     for (const key of alcoholClassesMap.keys())
-      header.push(<th>Class {key}</th>);
+      header.push(<th key={header.length}>Class {key}</th>);
     return header;
   };
 
