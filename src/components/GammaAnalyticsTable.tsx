@@ -16,7 +16,6 @@ const GammaAnalyticsTable = ({ alcoholClassesMap }: any) => {
       modes: string[] = [];
 
     for (const wines of alcoholClassesMap.values()) {
-      console.log("for ", wines);
       let mean: number = 0,
         median: number = 0,
         valuesMap = new Map(),
