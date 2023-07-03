@@ -16,11 +16,12 @@ const GammaAnalyticsTable = ({ alcoholClassesMap }: any) => {
       modes: string[] = [];
 
     for (const wines of alcoholClassesMap.values()) {
+      console.log("for ", wines);
       let mean: number = 0,
         median: number = 0,
         valuesMap = new Map(),
         MAX_COUNT: number = 0,
-        mode: number = 0;
+        mode: string = "";
 
       const gammas = wines.map(({ Ash, Hue, Magnesium }: Wine) => {
         Ash = Number(Ash);
@@ -29,11 +30,17 @@ const GammaAnalyticsTable = ({ alcoholClassesMap }: any) => {
 
         const gamma = (Ash * Hue) / Magnesium;
 
-        const count = valuesMap.get(gamma) || 0;
-        valuesMap.set(gamma, count + 1);
+        // checking mode for gamma value while considering only first 3 decimal digits
+        const gammaStr = gamma.toFixed(3);
+        const count = valuesMap.get(gammaStr) || 0;
+        valuesMap.set(gammaStr, count + 1);
+
         if (count + 1 > MAX_COUNT) {
           MAX_COUNT = count + 1;
-          mode = gamma;
+          mode = gammaStr;
+        } else if (count + 1 === MAX_COUNT) {
+          // in case same MAX_COUNT happens to be more than one time than there is more than one mode
+          mode += ", " + gammaStr;
         }
 
         mean += gamma;
@@ -54,8 +61,8 @@ const GammaAnalyticsTable = ({ alcoholClassesMap }: any) => {
         median = (gammas[midIdx - 1] + gammas[midIdx]) / 2;
       }
 
-      if (MAX_COUNT === 1) modes.push("NA");
-      else modes.push(mode.toFixed(3));
+      if (MAX_COUNT === 1) modes.push(" ");
+      else modes.push(mode);
 
       means.push(mean);
       medians.push(median);
