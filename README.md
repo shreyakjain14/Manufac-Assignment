@@ -34,7 +34,8 @@ Flavanoids Analytics table
 <img width="541" alt="Screenshot 2023-07-01 at 10 17 04 PM" src="https://github.com/shreyakjain14/Manufac-Assignment/assets/52107834/c8b0154b-db93-4ca6-9ff2-c1087ee594d8">
 
 Gamma Analytics table
-<img width="586" alt="Screenshot 2023-07-01 at 10 17 09 PM" src="https://github.com/shreyakjain14/Manufac-Assignment/assets/52107834/d4fde192-64c0-47a3-9cdf-3435c7b4665d">
+<img width="570" alt="Screenshot 2023-07-03 at 10 50 19 AM" src="https://github.com/shreyakjain14/Manufac-Assignment/assets/52107834/3b15a35b-2e63-4245-aa67-25dbe8210ed5">
+
 
 
 ### `npm run eject`
